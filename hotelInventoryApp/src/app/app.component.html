@@ -1,0 +1,15 @@
+<h1>Welcome Home</h1>
+
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'Admin'">
+        <h2>Admin</h2>
+        <krups-rooms></krups-rooms>
+    </div>
+    <div *ngSwitchCase="'User'">
+        <h2>User</h2>
+        <p>Welcome User!</p>
+    </div>
+    <div *ngSwitchDefault>
+        <h2>Guest</h2>
+    </div>
+</div>
