@@ -18,6 +18,8 @@ export class RoomsComponent implements OnInit {
 
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
+  new_title = 'Rooms List';
+  old_title = 'Room List';
 
   constructor() {}
   ngOnInit(): void {
@@ -53,9 +55,28 @@ export class RoomsComponent implements OnInit {
   }
   toggle() {
     this.hideRooms = !this.hideRooms;
+    const temp: string = this.old_title;
+    this.old_title = this.new_title;
+    this.new_title = temp;
   }
   selectRoom(room: RoomList) {
     console.log('Room Selected:', room);
     this.selectedRoom = room;
+  }
+  addRoom() {
+    const room: RoomList = {
+      roomNo: 104,
+      roomType: 'Standard',
+      amenities: 'TV, WiFi, Breakfast',
+      price: 3000,
+      photos: 'https://via.placeholder.com/150',
+      checkinTime: new Date('28-mar-2021'),
+      checkoutTime: new Date('29-mar-2021'),
+    };
+
+    // this.roomList.push(room);
+    this.roomList = [...this.roomList, room];
+
+    // console.log(this.roomList);
   }
 }

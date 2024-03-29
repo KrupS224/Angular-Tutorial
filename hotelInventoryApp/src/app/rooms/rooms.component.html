@@ -1,17 +1,25 @@
-<h1>Welcome to {{hotelName}}</h1>
+<h1>Welcome to {{ hotelName }}</h1>
 
 <div [hidden]="hideRooms">
-    No of Rooms:
-    <div [innerText]="noOfRooms"></div>
-    <!-- document.getElementById('noOfRooms').innerText = this.noOfRooms; -->
+  No of Rooms:
+  <div [innerText]="noOfRooms"></div>
+  <!-- document.getElementById('noOfRooms').innerText = this.noOfRooms; -->
 </div>
 
 <button (click)="toggle()">toggle</button>
 
 <div *ngIf="selectedRoom">
-    {{selectedRoom | json}}
+  {{ selectedRoom | json }}
+</div>
+
+<div>
+  <button (click)="addRoom()">Add Room</button>
 </div>
 
 <div *ngIf="rooms.availableRooms > 0">
-    <krups-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)"></krups-rooms-list>
+  <krups-rooms-list
+    [rooms]="roomList"
+    (selectedRoom)="selectRoom($event)"
+    [title]="new_title"
+  ></krups-rooms-list>
 </div>
